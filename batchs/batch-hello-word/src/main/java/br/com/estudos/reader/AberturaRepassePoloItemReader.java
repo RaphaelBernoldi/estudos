@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.reader;
+package br.com.estudos.reader;
 
 import java.util.ArrayList;
 import java.util.List;

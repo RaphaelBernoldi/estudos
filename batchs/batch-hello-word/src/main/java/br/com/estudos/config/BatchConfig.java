@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.config;
+package br.com.estudos.config;
 
 import java.util.List;
 
@@ -11,20 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.edu.cruzeirodosul.bo.PoloComissaoBatchBO;
-import br.edu.cruzeirodosul.listenerjobs.RepassePoloNotificationListener;
-import br.edu.cruzeirodosul.processor.AberturaRepassePoloProcessor;
-import br.edu.cruzeirodosul.processor.EnfileiraRepassePolosComissaoIniciadosItemProcessor;
-import br.edu.cruzeirodosul.processor.FinalizaCalculoRepassePoloComissaoItemProcessor;
-import br.edu.cruzeirodosul.processor.IniciaCalculoRepassePoloComissaoItemProcessor;
-import br.edu.cruzeirodosul.reader.AberturaRepassePoloItemReader;
-import br.edu.cruzeirodosul.reader.EnfileiraRepassePolosComissaoIniciadosItemReader;
-import br.edu.cruzeirodosul.reader.FinalizaCalculoRepassePoloComissaoItemReader;
-import br.edu.cruzeirodosul.reader.IniciaCalculoRepassePoloComissaoItemReader;
-import br.edu.cruzeirodosul.writer.AberturaRepassePoloWriter;
-import br.edu.cruzeirodosul.writer.EnfileiraPolosComissaoIniciadosItemWriter;
-import br.edu.cruzeirodosul.writer.FinalizaCalculoRepassePoloComissaoItemWriter;
-import br.edu.cruzeirodosul.writer.IniciaCalculoRepassePoloComissaoItemWriter;
+import br.com.estudos.bo.PoloComissaoBatchBO;
+import br.com.estudos.listenerjobs.RepassePoloNotificationListener;
+import br.com.estudos.processor.AberturaRepassePoloProcessor;
+import br.com.estudos.processor.EnfileiraRepassePolosComissaoIniciadosItemProcessor;
+import br.com.estudos.processor.FinalizaCalculoRepassePoloComissaoItemProcessor;
+import br.com.estudos.processor.IniciaCalculoRepassePoloComissaoItemProcessor;
+import br.com.estudos.reader.AberturaRepassePoloItemReader;
+import br.com.estudos.reader.EnfileiraRepassePolosComissaoIniciadosItemReader;
+import br.com.estudos.reader.FinalizaCalculoRepassePoloComissaoItemReader;
+import br.com.estudos.reader.IniciaCalculoRepassePoloComissaoItemReader;
+import br.com.estudos.writer.AberturaRepassePoloWriter;
+import br.com.estudos.writer.EnfileiraPolosComissaoIniciadosItemWriter;
+import br.com.estudos.writer.FinalizaCalculoRepassePoloComissaoItemWriter;
+import br.com.estudos.writer.IniciaCalculoRepassePoloComissaoItemWriter;
 
 @Configuration
 public class BatchConfig {

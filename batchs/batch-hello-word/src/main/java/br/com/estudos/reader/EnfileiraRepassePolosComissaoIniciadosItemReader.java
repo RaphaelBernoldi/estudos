@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.reader;
+package br.com.estudos.reader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
-import br.edu.cruzeirodosul.bo.PoloComissaoBatchBO;
+import br.com.estudos.bo.PoloComissaoBatchBO;
 
 public class EnfileiraRepassePolosComissaoIniciadosItemReader
 		implements ItemReader<PoloComissaoBatchBO> {

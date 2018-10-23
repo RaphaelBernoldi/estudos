@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul;
+package br.com.estudos;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;

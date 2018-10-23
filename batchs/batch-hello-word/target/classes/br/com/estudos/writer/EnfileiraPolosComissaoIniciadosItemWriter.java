@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.writer;
+package br.com.estudos.writer;
 
 import java.util.List;
 

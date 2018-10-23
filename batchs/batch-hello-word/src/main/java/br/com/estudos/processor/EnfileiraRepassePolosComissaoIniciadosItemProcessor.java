@@ -1,8 +1,8 @@
-package br.edu.cruzeirodosul.processor;
+package br.com.estudos.processor;
 
 import org.springframework.batch.item.ItemProcessor;
 
-import br.edu.cruzeirodosul.bo.PoloComissaoBatchBO;
+import br.com.estudos.bo.PoloComissaoBatchBO;
 
 public class EnfileiraRepassePolosComissaoIniciadosItemProcessor
 		implements ItemProcessor<PoloComissaoBatchBO, Long> {

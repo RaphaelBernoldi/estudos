@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.processor;
+package br.com.estudos.processor;
 
 import java.util.List;
 

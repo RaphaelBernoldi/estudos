@@ -1,10 +1,10 @@
-package br.edu.cruzeirodosul.writer;
+package br.com.estudos.writer;
 
 import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
 
-import br.edu.cruzeirodosul.bo.PoloComissaoBatchBO;
+import br.com.estudos.bo.PoloComissaoBatchBO;
 
 public class FinalizaCalculoRepassePoloComissaoItemWriter
 		implements ItemWriter<PoloComissaoBatchBO> {

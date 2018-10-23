@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.listenerjobs;
+package br.com.estudos.listenerjobs;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.listener.JobExecutionListenerSupport;

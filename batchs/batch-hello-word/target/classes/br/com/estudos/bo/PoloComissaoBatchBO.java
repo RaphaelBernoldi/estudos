@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.bo;
+package br.com.estudos.bo;
 
 import java.util.List;
 

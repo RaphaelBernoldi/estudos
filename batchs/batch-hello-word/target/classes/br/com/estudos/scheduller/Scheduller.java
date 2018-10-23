@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.scheduller;
+package br.com.estudos.scheduller;
 
 public interface Scheduller {
 

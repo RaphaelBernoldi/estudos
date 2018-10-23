@@ -1,4 +1,4 @@
-package br.edu.cruzeirodosul.scheduller;
+package br.com.estudos.scheduller;
 
 import javax.annotation.Resource;
 
