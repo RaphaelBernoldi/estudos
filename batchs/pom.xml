@@ -66,9 +66,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc7</artifactId>
-			<version>12.1.0.2</version>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.0-801.jdbc4</version>
 		</dependency>
 
 		<dependency>
@@ -93,13 +93,6 @@
 	</dependencies>
 
 	<repositories>
-
-		<repository>
-			<id>public</id>
-			<name>Public Repositories</name>
-			<url>http://devops.cruzeirodosul.edu.br:8081/nexus/content/groups/public-develop/</url>
-		</repository>
-
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -118,11 +111,6 @@
 		</repository>
 	</repositories>
 	<pluginRepositories>
-		<pluginRepository>
-			<id>public</id>
-			<name>Public Repositories</name>
-			<url>http://devops.cruzeirodosul.edu.br:8081/nexus/content/groups/public-develop/</url>
-		</pluginRepository>
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -147,7 +135,7 @@
 				<directory>src/main/java</directory>
 			</resource>
 			<resource>
-				<directory>src/test/java</directory>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 		<plugins>

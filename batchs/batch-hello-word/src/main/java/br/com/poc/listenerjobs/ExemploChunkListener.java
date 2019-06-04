@@ -9,13 +9,13 @@ public class ExemploChunkListener extends JobExecutionListenerSupport{
 	
 	@Override
 	public void afterJob(JobExecution jobExecution) {
-		// TODO Auto-generated method stub
+		System.out.println("afterJob - " + jobExecution.getExitStatus());
 		super.afterJob(jobExecution);
 	}
 	
 	@Override
 	public void beforeJob(JobExecution jobExecution) {
-		// TODO Auto-generated method stub
+		System.out.println("beforeJob - " + jobExecution.getExitStatus());
 		super.beforeJob(jobExecution);
 	}
 	

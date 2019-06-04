@@ -1,5 +1,7 @@
 package br.com.poc.config;
 
+import java.util.List;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -16,29 +18,33 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.poc.listenerjobs.ExemploChunkListener;
 import br.com.poc.listenerjobs.ExemploTaskletListener;
+import br.com.poc.processor.ExemploItemProcessor;
+import br.com.poc.reader.ExemploItemReader;
 import br.com.poc.tasket.ExemploTasklet;
+import br.com.poc.writer.ExemploItemWriter;
 
 /**
  * 
  * @author raphael
  * Exemplo de configuração de Jobs para utilização de tasklets
  */
-@Configuration
+//@Configuration
 public class BatchTaskletConfig {
 
-	@Autowired
+	//@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
-	@Autowired
+	//@Autowired
 	private JobBuilderFactory jobBuilderFactory;
 	
-	@Autowired
-	@Qualifier("pocTaskletListener")
+	//@Autowired
+	//@Qualifier("pocTaskletListener")
 	private JobExecutionListenerSupport pocTaskletListener;
 	
 	/******** config job ********/
-	@Bean
+	//@Bean
 	public Job jobPocTasklet() {
 		return jobBuilderFactory
 				.get("jobPocTasklet")
@@ -50,7 +56,7 @@ public class BatchTaskletConfig {
 	}
 
 	/******** config step ********/
-	@Bean
+	//@Bean
 	public Step stepPocTasklet() {
 		return stepBuilderFactory
 				.get("stepPocTasklet")
@@ -59,28 +65,29 @@ public class BatchTaskletConfig {
 	}
 
 	/******** config tasklet ********/
-	@Bean
+	//@Bean
 	public Tasklet exemploTasklet() {
 		 return new ExemploTasklet();
 	}
 	
 	/******** config job repository ********/
-	@Bean
+	//@Bean
 	public JobLauncher jobLauncher(JobRepository jobRepository) {
 		SimpleJobLauncher launcher = new SimpleJobLauncher();
 		launcher.setJobRepository(jobRepository);
 		return launcher;
 	}
 	
-	@Bean
+	//@Bean
 	public JobRepository jobRepository(MapJobRepositoryFactoryBean factory) throws Exception {
 		return factory.getObject();
 	}
 	
 	/******** config job listener ********/
-	@Bean
+	//@Bean
 	public JobExecutionListenerSupport listenerPocTasklet() {
 		return new ExemploTaskletListener();
 	}
+	
 
 }

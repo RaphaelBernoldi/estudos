@@ -11,6 +11,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableBatchProcessing
 @EnableScheduling
 public class MainApplication {
+	
+	
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(MainApplication.class, args);
