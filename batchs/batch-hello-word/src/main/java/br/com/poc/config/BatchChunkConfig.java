@@ -2,8 +2,6 @@ package br.com.poc.config;
 
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -16,9 +14,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.poc.listenerjobs.ExemploChunkListener;
+import br.com.poc.model.acpo021.v1.CliComplexType;
+import br.com.poc.model.dto.ClientToProcDTO;
+import br.com.poc.processor.CadPosItemProcessor;
 import br.com.poc.processor.ExemploItemProcessor;
+import br.com.poc.processor.GeraArquivoItemProcessor;
+import br.com.poc.reader.CadPosItemReader;
 import br.com.poc.reader.ExemploItemReader;
+import br.com.poc.reader.GeraArquivoItemReader;
+import br.com.poc.writer.CadPosItemWriter;
 import br.com.poc.writer.ExemploItemWriter;
+import br.com.poc.writer.GeraArquivoItemWriter;
 
 /**
  * 
@@ -36,6 +42,22 @@ public class BatchChunkConfig {
 	
 	@Autowired
 	private JobRepositoryConfig jobRepositoryConfig;
+	
+
+	@Bean(name="jobLauncherChunk")
+	public JobLauncher jobLauncher() {
+			
+			try {
+				SimpleJobLauncher launcher = new SimpleJobLauncher();
+				launcher.setJobRepository(jobRepositoryConfig.criaJobRepository());
+				return launcher;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
 
 	/************************** JOBS *********************************/
 	@Bean
@@ -50,8 +72,34 @@ public class BatchChunkConfig {
 				.end()
 				.build();
 	}
+	
+	@Bean
+	public Job jobCadastroPositivo(ExemploChunkListener listener) throws Exception {
+		System.out.println("iniciaProcessamento  - " + jobBuilderFactory);
 
-	/************************** STEPS *********************************/
+		return jobBuilderFactory
+				.get("jobCadastroPositivo")
+				.incrementer(new RunIdIncrementer())
+				.listener(listener)
+				.flow(stepMigrateDataCadPos())
+				.end()
+				.build();
+	}
+	
+	@Bean
+	public Job jobGeraArquivoTeste(ExemploChunkListener listener) throws Exception {
+		System.out.println("iniciaProcessamento  - " + jobBuilderFactory);
+
+		return jobBuilderFactory
+				.get("jobGeraArquivoTeste")
+				.incrementer(new RunIdIncrementer())
+				.listener(listener)
+				.flow(stepGeraArquivoTeste())
+				.end()
+				.build();
+	}
+
+	/************************** STEPS  *********************************/
 	@Bean
 	public Step primeiroStep() {
 		System.out.println("primeiroStep ");
@@ -77,19 +125,27 @@ public class BatchChunkConfig {
 				.build();
 	}
 	
-	@Bean(name="jobLauncherChunk")
-	public JobLauncher jobLauncher() {
-			
-			try {
-				SimpleJobLauncher launcher = new SimpleJobLauncher();
-				launcher.setJobRepository(jobRepositoryConfig.criaJobRepository());
-				return launcher;
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			}
-		}
-		
+	@Bean
+	public Step stepMigrateDataCadPos() throws Exception {
+		System.out.println("stepMigrateDataCadPos");
 
+		return stepBuilderFactory.get("stepMigrateDataCadPos").<ClientToProcDTO, ClientToProcDTO>chunk(100)
+				.reader(new CadPosItemReader())
+				.processor(new CadPosItemProcessor()) 
+				.writer(new CadPosItemWriter()) 
+				.build();
+	}
+	
+	@Bean
+	public Step stepGeraArquivoTeste() throws Exception {
+		System.out.println("stepGeraArquivoTeste");
+
+		return stepBuilderFactory.get("stepGeraArquivoTeste").<CliComplexType, CliComplexType>chunk(1000)
+				.reader(new GeraArquivoItemReader())
+				.processor(new GeraArquivoItemProcessor()) 
+				.writer(new GeraArquivoItemWriter()) 
+				.build();
+	}
+	
+	
 }

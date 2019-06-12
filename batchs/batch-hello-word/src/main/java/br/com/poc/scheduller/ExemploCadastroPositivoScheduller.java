@@ -16,26 +16,25 @@ import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteExcep
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExemploChunkScheduller implements Scheduller {
+public class ExemploCadastroPositivoScheduller implements Scheduller {
 
 	@Autowired
 	@Qualifier("jobLauncherChunk")
 	private JobLauncher jobLauncher;
 
 	@Autowired
-	@Resource(name = "jobGeraArquivoTeste")
+	@Resource(name = "jobCadastroPositivo")
 	private Job job;
 	
 	private JobExecution execution;
 	
 	@Override
-	@Scheduled(cron = "*/10 * * * * ?")
+	//@Scheduled(cron = "*/10 * * * * ?")
 	public void run() {
-		System.out.println("ExemploChunkScheduller.run()");
+		System.out.println("ExemploCadastroPositivoScheduller.run()");
 		
 		try {
 			
