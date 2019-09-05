@@ -20,6 +20,7 @@ public class Oauth2GoogleResource {
 	@Qualifier("googleAuthorizeService")
 	private AuthorizeService authorizeService;
 	
+	
 	@GetMapping(value = "/authorize/{email}")
 	public RedirectView authorize(@PathVariable String email) {
 		return new RedirectView(authorizeService.authorize(email));

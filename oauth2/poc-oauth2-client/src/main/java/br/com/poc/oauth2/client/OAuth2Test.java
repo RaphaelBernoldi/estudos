@@ -57,6 +57,7 @@ public class OAuth2Test {
 
 			// authorization
 			Credential credential = authorize();
+			
 
 			// set up global Oauth2 instance
 			oauth2 = new Oauth2.Builder(httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME)
