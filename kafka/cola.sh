@@ -15,6 +15,9 @@ tar -xzf kafka_2.12-2.5.0.tgz
 #Lista topicos
 ./kafka-topics.sh --list --bootstrap-server localhost:9092
 
+#Descreve topicos
+./kafka-topics.sh --bootstrap-server localhost:9092 --describe
+
 #cria topicos
 ./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic NOME_TOPIC
 
