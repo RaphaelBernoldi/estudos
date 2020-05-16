@@ -28,3 +28,5 @@ tar -xzf kafka_2.12-2.5.0.tgz
 #Consome mensagem de um topico
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO --from-beginning
 
+#Verifica grupos / detalhes de grupos
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092  --describe --all-groups
