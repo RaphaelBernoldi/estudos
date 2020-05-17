@@ -2,11 +2,13 @@ package br.com.estudos;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
+import java.util.Map;
+
 public class EmailService {
 
     public static void main(String[] args) {
         EmailService emailService = new EmailService();
-        try(KafkaConsumerService kafkaConsumer = new KafkaConsumerService(EmailService.class.getName(), "ECOMMERCE_NEW_ORDER", emailService::parse)) {
+        try(KafkaConsumerService kafkaConsumer = new KafkaConsumerService(EmailService.class.getName(), "ECOMMERCE_SEND_EMAIL", emailService::parse, String.class, Map.of())) {
             kafkaConsumer.run();
         }
     }

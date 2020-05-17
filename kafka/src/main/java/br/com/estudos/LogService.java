@@ -1,17 +1,26 @@
 package br.com.estudos;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class LogService {
+import java.util.Map;
+import java.util.regex.Pattern;
+
+public class LogService<T> {
 
     public static void main(String[] args) {
         LogService logService = new LogService();
-        try(KafkaConsumerService kafkaConsumer = new KafkaConsumerService(LogService.class.getName(), "ECOMMERCE_NEW_ORDER", logService::parse)) {
+        try(KafkaConsumerService kafkaConsumer = new KafkaConsumerService(LogService.class.getName()
+                                                                        , Pattern.compile("ECOMMERCE_.*")
+                                                                        , logService::parse
+                                                                        , String.class
+                                                                        , Map.of(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class))) {
             kafkaConsumer.run();
         }
     }
 
-    private void parse(ConsumerRecord<String, String> record){
+    private void parse(ConsumerRecord<String, T> record){
         System.out.println("::::::::::::::::::::::::::::::::::::READ-MESSAGE::::::::::::::::::::::::::::::::::::");
         System.out.println(record.key());
         System.out.println(record.topic());
