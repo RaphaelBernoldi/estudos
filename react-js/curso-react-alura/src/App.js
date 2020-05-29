@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Tabela from './Tabela';
 
-function App() {
-  const  autores =  [
+class App extends Component {
+  state = {
+    autores: [
     {
       nome: 'Paulo',
       livro: 'React',
@@ -29,13 +30,29 @@ function App() {
       livro: 'Java',
       preco: '100'
     }
-  ];
+  ],
+}
 
+removeAutor = index =>{
+  const { autores } = this.state;
+
+  this.setState(
+    {
+      autores : autores.filter((autor, posAtual) => {
+        return posAtual !== index;
+      }),
+    }
+  );
+}
+
+render(){
   return (
     <div className="App">
-      <Tabela listaAutores = { autores }/>
+      <Tabela listaAutores = { this.state.autores } removeAutor = { this.removeAutor } />
     </div>
   );
+}
+  
 }
 
 export default App;
