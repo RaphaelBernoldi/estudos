@@ -3,61 +3,52 @@ import Header from './header';
 import TabelaAutores from './TabelaAutores';
 import Formulario from './Formulario';
 import PopUp from './PopUp';
+import ApiService from './ApiService';
 
 class Autores extends Component{
 
     state = {
-        autores: [
-        {
-          nome: 'Paulo',
-          livro: 'React',
-          preco: '1000'
-        },
-        {
-          nome: 'Daniel',
-          livro: 'Java',
-          preco: '99'
-        },
-        {
-          nome: 'Marcos',
-          livro: 'Design',
-          preco: '150'
-        },
-        {
-          nome: 'Bruno',
-          livro: 'DevOps',
-          preco: '100'
-        },
-        {
-          nome: 'Raphael',
-          livro: 'Java',
-          preco: '100'
-        }
-      ],
+        autores: [],
     }
 
-    removeAutor = index =>{
+    removeAutor = id =>{
         const { autores } = this.state;
       
         this.setState(
           {
-            autores : autores.filter((autor, posAtual) => {
-              return posAtual !== index;
+            autores : autores.filter((autor) => {
+              return autor.id !== id;
             }),
           }
         );
+        ApiService.removeAutor(id);
         PopUp.exibeMensagem('success', "Autor removido com sucesso");
       
       }
       
       escutadorDeSubmit = autor => {
-              this.setState({
-                autores: [...this.state.autores, autor],
-              });
-              PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
+          ApiService
+            .criaAutor(JSON.stringify(autor))
+            .then(res => {
+                this.setState({
+                    autores: [...this.state.autores, res.data],
+                  });
+                  PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
+            });
+             
+      }
+
+
+      componentDidMount(){
+          ApiService
+            .listaAutores()
+            .then(res => {
+                this.setState({autores : [...this.state.autores, ...res.data]});
+            });
       }
       
       render(){
+        
         return (
           <Fragment>
             <Header />

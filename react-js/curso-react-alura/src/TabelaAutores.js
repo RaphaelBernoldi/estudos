@@ -17,12 +17,12 @@ const TableHead = () => {
 const TableBody = props => {
    const linhas = props.listaAutores.map((autor, index) => {
         return(
-            <tr key={index}>
+            <tr key={ autor.id }>
                 <td>{ autor.nome }</td>
                 <td>{ autor.livro }</td>
                 <td>{ autor.preco }</td>
                 <td>
-                    <button onClick={() => { props.removeAutor(index) } } className="waves-effect waves-light indigo lighten-2 btn" >Remover</button>
+                    <button onClick={() => { props.removeAutor( autor.id ) } } className="waves-effect waves-light indigo lighten-2 btn" >Remover</button>
                 </td>
             </tr>
         );
