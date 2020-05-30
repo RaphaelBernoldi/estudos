@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+// import FormValidator from './FormValidator';
 
 class Formulario extends Component {
 
@@ -14,8 +15,8 @@ class Formulario extends Component {
         this.state = this.stateInicial;
     }
 
-    escutadorDeImput = event => {
-        const { name, value} = event.target;
+    escutadorDeInput = event => {
+        const { name, value } = event.target;
 
         this.setState({
             [name]: value,
@@ -25,6 +26,7 @@ class Formulario extends Component {
     submitFormulario = () => {
         this.props.escutadorDeSubmit(this.state);
         this.setState(this.stateInicial);
+        
     }
 
 
@@ -43,7 +45,7 @@ class Formulario extends Component {
                             type="text"
                             name="nome"
                             value={nome}
-                            onChange={this.escutadorDeInput} />
+                            onChange={ this.escutadorDeInput } />
                     </div>
                     <div className="input-field col s4">
                         <label className="input-field" htmlFor="livro">Livro</label>
