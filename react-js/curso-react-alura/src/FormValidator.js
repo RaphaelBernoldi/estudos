@@ -18,6 +18,7 @@ class FormValidator {
 
     valida(state){
         
+        console.log('state:' + JSON.stringify( state));
         let validacao = this.valido();
 
 

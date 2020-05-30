@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 const TableHead = () => {
     return (
         <thead>
@@ -14,7 +15,7 @@ const TableHead = () => {
 }
 
 const TableBody = props => {
-   const linhas = props.lista.map((autor, index) => {
+   const linhas = props.listaAutores.map((autor, index) => {
         return(
             <tr key={index}>
                 <td>{ autor.nome }</td>
@@ -36,7 +37,7 @@ const TableBody = props => {
 
 }
 
-class Tabela extends Component {
+class TabelaAutores extends Component {
 
 
 
@@ -46,9 +47,9 @@ class Tabela extends Component {
         return(
             <table className="centered highlight">
                 <TableHead />
-                <TableBody lista = { listaAutores }  removeAutor ={ removeAutor } />
+                <TableBody listaAutores = { listaAutores }  removeAutor ={ removeAutor } />
             </table>
         );
     }
 }
-export default Tabela;
+export default TabelaAutores;
