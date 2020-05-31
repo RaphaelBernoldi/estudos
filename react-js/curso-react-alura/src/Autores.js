@@ -16,7 +16,6 @@ class Autores extends Component{
       
         ApiService
             .removeAutor(id)
-            .then(res => ApiService.trataErros(res))
             .then(res => {
                 if(res.message === 'deleted'){
                     this.setState(
@@ -36,7 +35,6 @@ class Autores extends Component{
       escutadorDeSubmit = autor => {
           ApiService
             .criaAutor(JSON.stringify(autor))
-            .then(res => ApiService.trataErros(res))
             .then(res => {
                 if(res.message === 'success'){
                     this.setState({
@@ -54,7 +52,6 @@ class Autores extends Component{
       componentDidMount(){
           ApiService
             .listaAutores()
-            .then(res => ApiService.trataErros(res))
             .then(res => {
                 if(res.message === 'success'){
                     this.setState({autores : [...this.state.autores, ...res.data]});
