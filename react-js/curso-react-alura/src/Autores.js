@@ -14,27 +14,39 @@ class Autores extends Component{
     removeAutor = id =>{
         const { autores } = this.state;
       
-        this.setState(
-          {
-            autores : autores.filter((autor) => {
-              return autor.id !== id;
-            }),
-          }
-        );
-        ApiService.removeAutor(id);
-        PopUp.exibeMensagem('success', "Autor removido com sucesso");
+        ApiService
+            .removeAutor(id)
+            .then(res => ApiService.trataErros(res))
+            .then(res => {
+                if(res.message === 'deleted'){
+                    this.setState(
+                        {
+                          autores : autores.filter((autor) => {
+                            return autor.id !== id;
+                          }),
+                        }
+                      );
+                      PopUp.exibeMensagem('success', "Autor removido com sucesso");
+                }
+            }).catch(res => PopUp.exibeMensagem('error', "Falha ao remover autor"));
+        
       
       }
       
       escutadorDeSubmit = autor => {
           ApiService
             .criaAutor(JSON.stringify(autor))
+            .then(res => ApiService.trataErros(res))
             .then(res => {
-                this.setState({
-                    autores: [...this.state.autores, res.data],
-                  });
-                  PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
-            });
+                if(res.message === 'success'){
+                    this.setState({
+                        autores: [...this.state.autores, res.data],
+                      });
+                      PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
+                }
+                
+            })
+            .catch(res => PopUp.exibeMensagem('error', "Falha ao criar autor"));
              
       }
 
@@ -42,9 +54,14 @@ class Autores extends Component{
       componentDidMount(){
           ApiService
             .listaAutores()
+            .then(res => ApiService.trataErros(res))
             .then(res => {
-                this.setState({autores : [...this.state.autores, ...res.data]});
-            });
+                if(res.message === 'success'){
+                    this.setState({autores : [...this.state.autores, ...res.data]});
+                }
+                
+            })
+            .catch(res => PopUp.exibeMensagem('error', "Falha ao listar autor"));
       }
       
       render(){
