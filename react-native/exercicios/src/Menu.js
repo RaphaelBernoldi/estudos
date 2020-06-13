@@ -7,6 +7,8 @@ import ParImpar from './componentes/ParImpar';
 import Inverter, { MegaSena } from './componentes/Multi';
 import Simples from './componentes/Simples';
 import Evento from './componentes/Evento';
+import Contador from './componentes/Contador';
+import Plataforma from './componentes/Plataforma';
 
 
 const Drawer = createDrawerNavigator();
@@ -16,7 +18,7 @@ const inverterScreen = () => <Inverter texto='React Nativo!'/>
 const parImparScreen = () => <ParImpar numero={30}/>
 const simplesScreen = () => <Simples texto='Texto simples'/>
 const eventoScreen = () => <Evento/>
-
+const contadorScreen = () => <Contador numeroInicial={1}/>
 
 export default class Menu extends Component {
     
@@ -25,6 +27,8 @@ export default class Menu extends Component {
         return (
             <NavigationContainer>
               <Drawer.Navigator>
+                <Drawer.Screen name="Plataforma" component={Plataforma} />
+                <Drawer.Screen name="Contador" component={contadorScreen} />
                 <Drawer.Screen name="Evento" component={eventoScreen} />
                 <Drawer.Screen name="Mega Sena" component={megaSenaScreen} />
                 <Drawer.Screen name="Inverter" component={inverterScreen} />
