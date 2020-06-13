@@ -9,6 +9,7 @@ import Simples from './componentes/Simples';
 import Evento from './componentes/Evento';
 import Contador from './componentes/Contador';
 import Plataforma from './componentes/Plataforma';
+import ValidarProps from './componentes/ValidarProps';
 
 
 const Drawer = createDrawerNavigator();
@@ -19,6 +20,7 @@ const parImparScreen = () => <ParImpar numero={30}/>
 const simplesScreen = () => <Simples texto='Texto simples'/>
 const eventoScreen = () => <Evento/>
 const contadorScreen = () => <Contador numeroInicial={1}/>
+const validarPropsScreen = () =>  <ValidarProps ano={20} />
 
 export default class Menu extends Component {
     
@@ -27,6 +29,7 @@ export default class Menu extends Component {
         return (
             <NavigationContainer>
               <Drawer.Navigator>
+                <Drawer.Screen name="Validar Props" component={validarPropsScreen} />
                 <Drawer.Screen name="Plataforma" component={Plataforma} />
                 <Drawer.Screen name="Contador" component={contadorScreen} />
                 <Drawer.Screen name="Evento" component={eventoScreen} />
