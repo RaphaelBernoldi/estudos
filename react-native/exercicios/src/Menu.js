@@ -11,6 +11,7 @@ import Contador from './componentes/Contador';
 import Plataforma from './componentes/Plataforma';
 import ValidarProps from './componentes/ValidarProps';
 import Avo from './componentes/ComunicacaoDireta';
+import TextoSincronizado from './componentes/ComunicacaoIndireta';
 
 
 const Drawer = createDrawerNavigator();
@@ -23,6 +24,7 @@ const eventoScreen = () => <Evento/>
 const contadorScreen = () => <Contador numeroInicial={1}/>
 const validarPropsScreen = () =>  <ValidarProps ano={20} />
 const comunicacaoDiretaScreen = () =>  <Avo nome='Joel' sobrenome='Bernoldi'/>
+const comunicacaoIndiretaScreen = () =>  <TextoSincronizado />
 
 
 export default class Menu extends Component {
@@ -32,6 +34,7 @@ export default class Menu extends Component {
         return (
             <NavigationContainer>
               <Drawer.Navigator>
+                <Drawer.Screen name="Comunicacao Indireta" component={comunicacaoIndiretaScreen} />
                 <Drawer.Screen name="Comunicacao Direta" component={comunicacaoDiretaScreen} />
                 <Drawer.Screen name="Validar Props" component={validarPropsScreen} />
                 <Drawer.Screen name="Plataforma" component={Plataforma} />
