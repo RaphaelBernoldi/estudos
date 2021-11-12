@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'; 
 import { View, Text, StyleSheet } from 'react-native';
 import Simples from './src/componentes/Simples';
 import ParImpar from './src/componentes/ParImpar';
