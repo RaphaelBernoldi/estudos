@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f1a8a0b3-1fbd-4bee-a9ae-6d2cfa99adb2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<conditionalStyle>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<field name="PRINT_HEADER_LIFE_SECURE" class="java.lang.String"/>
+	<field name="VALUE_QUOTATION_ID" class="java.lang.String"/>
+	<field name="PRINT_HEADER_HDI_SECURES" class="java.lang.String"/>
+	<field name="PRINT_HEADER_SUSEP_PROCESS_NUMBER" class="java.lang.String"/>
+	<field name="DOCUMENT_ISNT_VALID" class="java.lang.String"/>
+	<field name="CLIENT_DATA_TITLE" class="java.lang.String"/>
+	<field name="CLIENT_DATA_PROPONENT" class="java.lang.String"/>
+	<field name="VALUE_PERSON_NAME" class="java.lang.String"/>
+	<field name="CLIENT_DATA_CURRENCY" class="java.lang.String"/>
+	<field name="VALUE_CURRENCY" class="java.lang.String"/>
+	<field name="CLIENT_DATA_CPF_CNPJ" class="java.lang.String"/>
+	<field name="VALUE_CPF_CNPJ" class="java.lang.String"/>
+	<variable name="DATE" class="java.util.Date">
+		<variableExpression><![CDATA[]]></variableExpression>
+		<initialValueExpression><![CDATA[new Date()]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="13" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="0" y="0" width="50" height="10" uuid="1bf4b192-8873-496c-a064-6d43b7c47b14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{DATE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="35" forecolor="#C0C0C0" uuid="f0d67657-5b36-44b0-9bf3-b1987dc473c2"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="442">
+			<image>
+				<reportElement x="4" y="12" width="151" height="63" uuid="cd6520e8-e19f-432b-aeed-fd4833dfbcfc"/>
+				<imageExpression><![CDATA["/home/raphael/Documents/hdi-digital-logo.png"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="false">
+				<reportElement x="234" y="35" width="100" height="20" uuid="a6693a2a-c4f0-42f5-b151-3d54c531b15c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRINT_HEADER_LIFE_SECURE} == null ? "PRINT_HEADER_LIFE_SECURE" : $F{PRINT_HEADER_LIFE_SECURE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="60" width="162" height="15" uuid="5409ef19-99ba-48d7-b619-078a67e67d3f"/>
+				<textFieldExpression><![CDATA[$F{VALUE_QUOTATION_ID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="233" y="60" width="59" height="15" uuid="d306c279-3deb-42c6-834f-ec3024adc260"/>
+				<text><![CDATA[Cotação: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="395" y="35" width="150" height="20" uuid="33c81c02-fff4-4f4f-af5f-8456b7477adf"/>
+				<textFieldExpression><![CDATA[$F{PRINT_HEADER_HDI_SECURES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="60" width="101" height="20" uuid="e1dbcfb8-949a-437c-841e-aa25830d8bca"/>
+				<textFieldExpression><![CDATA[$F{PRINT_HEADER_SUSEP_PROCESS_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="118" width="289" height="20" uuid="18a6bc52-9648-49ca-afa2-7c93b3f36c2b"/>
+				<textFieldExpression><![CDATA[$F{DOCUMENT_ISNT_VALID}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="423" forecolor="#C0C0C0" uuid="32a1e1fb-0fd1-4794-a10c-85149fc34f07"/>
+			</rectangle>
+			<line>
+				<reportElement x="5" y="158" width="540" height="1" uuid="e6d31710-80a5-45ec-87f7-35b0db2dc4a6"/>
+			</line>
+			<textField>
+				<reportElement x="5" y="143" width="100" height="15" uuid="b73e9152-8221-4aef-aa8b-8b3de1ead10e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENT_DATA_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="159" width="66" height="20" uuid="60b61e9e-3f04-4d67-ab5c-be5100e12995"/>
+				<textFieldExpression><![CDATA[$F{CLIENT_DATA_PROPONENT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="198" y="312" width="56" height="20" uuid="982de4cb-b573-4306-bdd6-6776744def98"/>
+				<text><![CDATA[Moeda: R$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="71" y="159" width="100" height="20" uuid="da38d191-18cc-4a24-b7ae-fae2d9e5827f"/>
+				<textFieldExpression><![CDATA[$F{VALUE_PERSON_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="179" width="57" height="20" uuid="b6fd5e48-12df-4398-bea7-85a853c6ed45"/>
+				<textFieldExpression><![CDATA[$F{CLIENT_DATA_CURRENCY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="179" width="110" height="20" uuid="e117729c-b138-4e3b-b458-84cf208f85ec"/>
+				<textFieldExpression><![CDATA[$F{VALUE_CURRENCY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="159" width="76" height="20" uuid="845d4939-12fc-43bd-b922-fb19e4abe0ee"/>
+				<textFieldExpression><![CDATA[$F{VALUE_CPF_CNPJ} != null ? $F{CLIENT_DATA_CPF_CNPJ} : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="368" y="159" width="177" height="20" uuid="8abf34b9-64c8-4821-b0ab-2a1c825c36b7"/>
+				<textFieldExpression><![CDATA[$F{VALUE_CPF_CNPJ}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="210" width="540" height="1" uuid="89060f14-2128-448a-8d8a-2afcec2cd373"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="23" width="275" height="15" uuid="1bd41a30-245e-4b7f-b0db-8e7a8c93a24e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[https://vida-int.hdi.com.br/view/life-fe/v1/hdi/cotacao/nova-cotacao]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="538" y="23" width="17" height="15" uuid="bbf2f552-5b42-4e13-9529-8fca0a41b6b8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="23" forecolor="#C0C0C0" uuid="f50df978-244f-4d62-8694-81716f9f3f67"/>
+			</rectangle>
+		</band>
+	</columnFooter>
+</jasperReport>
