@@ -3,3 +3,10 @@
 /kafka/.idea/*
 
 
+workshop-devops-na-nuvem/00-remote-backend-stack/.terraform/*
+workshop-devops-na-nuvem/00-remote-backend-stack/terraform.tfstate
+workshop-devops-na-nuvem/00-remote-backend-stack/terraform.tfstate.backup
+workshop-devops-na-nuvem/01-networking-stack/.terraform.lock.hcl
+workshop-devops-na-nuvem/01-networking-stack/terraform.tfstate
+workshop-devops-na-nuvem/01-networking-stack/terraform.tfstate.backup
+workshop-devops-na-nuvem/01-networking-stack/.terraform/*
