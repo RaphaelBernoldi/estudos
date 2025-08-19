@@ -61,3 +61,24 @@ variable "eks_cluster" {
   }
 
 }
+variable "ecr_repository" {
+  type = list(object({
+    name = string
+    image_tag_mutability = string
+  }))
+  default = [
+    {
+      name                = "workshop-ecr-repository/backend"
+      image_tag_mutability = "MUTABLE"
+    },
+    {
+      name                = "workshop-ecr-repository/frontend"
+      image_tag_mutability = "MUTABLE"
+    },
+    {
+      name                = "workshop-ecr-repository/ingress-nginx-controller"
+      image_tag_mutability = "MUTABLE"
+    }
+  ]
+  
+}
