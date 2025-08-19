@@ -10,3 +10,7 @@ workshop-devops-na-nuvem/01-networking-stack/.terraform.lock.hcl
 workshop-devops-na-nuvem/01-networking-stack/terraform.tfstate
 workshop-devops-na-nuvem/01-networking-stack/terraform.tfstate.backup
 workshop-devops-na-nuvem/01-networking-stack/.terraform/*
+workshop-devops-na-nuvem/02-eks-cluster-stack/.terraform.lock.hcl
+workshop-devops-na-nuvem/02-eks-cluster-stack/.terraform/terraform.tfstate
+workshop-devops-na-nuvem/02-eks-cluster-stack/.terraform/providers/registry.terraform.io/hashicorp/aws/6.7.0/linux_amd64/terraform-provider-aws_v6.7.0_x5
+workshop-devops-na-nuvem/02-eks-cluster-stack/.terraform/*
