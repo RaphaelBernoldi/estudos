@@ -54,6 +54,7 @@ docker push 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository
  - Entrar na pasta 02-eks-cluster-stack/dnv-workshop-kubernetes$
  - kubectl apply -f backend/deployment.yaml -f backend/service.yaml
  - kubectl apply -f frontend/deployment.yaml -f frontend/service.yaml
+ - kubectl apply -k .
 
  # Para não ser necessário passar um monte desses paramtros, ou até deixa-los dinamicos é comum usar o kustomize, ele já é integrado com o kubernetes e possibilita fazer esses processos, evitando ser obrigado a deixar a pipeline dinamica o que pode ser problematico e complexo
  
@@ -62,12 +63,18 @@ docker push 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository
 # Comandos uteis para kubectl
 kubectl get nodes # para listar os nodes
 kubectl get pods # para listar os pods
-kubectl describe  pods  backend-deployment-694f67fd49-bdxrd # omando para descrever o pod
+kubectl describe  pods  backend-deployment-694f67fd49-bdxrd # comando para descrever o pod
 kubectl get pods --all-namespaces # Lista os namespaces
 kubectl port-forward deploy/backend-deployment 8080:80 # cria um túneo da minha máquina local para o pod
-kubectl port-forward pod/backend-deployment-694f67fd49-bdxrd 8080:80 outra alternativa me legal para fazer o mesmo
+kubectl port-forward pod/backend-deployment-694f67fd49-bdxrd 8080:80 #/outra alternativa me legal para fazer o mesmo
+kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller #verifica logs do load balance controlelr
+
 
 
 
 # Configuração OIDC
 Essa configuração serve para autenticar alguma aplicação externa dentro da minha nuvem
+
+ - Entrar no cluster e pegar o openid-connect
+ - criar o resource oidc
+ - 
