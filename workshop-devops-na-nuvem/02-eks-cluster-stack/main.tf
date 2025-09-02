@@ -28,7 +28,7 @@ provider "aws" {
 }
 
 provider "helm" {
-  kubernetes  {
+  kubernetes {
     host                   = aws_eks_cluster.this.endpoint
     cluster_ca_certificate = base64decode(aws_eks_cluster.this.certificate_authority[0].data)
     exec {

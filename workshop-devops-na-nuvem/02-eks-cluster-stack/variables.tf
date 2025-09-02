@@ -50,12 +50,12 @@ variable "eks_cluster" {
     version                   = "1.31"
     enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
     node_group_name           = "workshop_eks_node_group"
-    node_group_instance_type  = ["t3.micro"]
+    node_group_instance_type  = ["t3.small"]
     node_group_capacity_type  = "ON_DEMAND"
     node_group_scaling_config = {
-      desired_size = 4
-      max_size     = 4
-      min_size     = 2
+      desired_size = 10
+      max_size     = 10
+      min_size     = 10
     }
 
   }
