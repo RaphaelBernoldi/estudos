@@ -1,0 +1,15 @@
+resources:
+  - backend/deployment.yaml
+  - backend/service.yaml
+  - frontend/deployment.yaml
+  - frontend/service.yaml
+  - ingress.yaml
+
+images:
+  - name: 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository/backend
+    newName: 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository/backend
+    newTag: v1.0
+
+  - name: 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository/frontend
+    newName: 848175180062.dkr.ecr.us-east-1.amazonaws.com/workshop-ecr-repository/frontend
+    newTag: v1.0

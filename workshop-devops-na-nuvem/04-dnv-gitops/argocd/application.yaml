@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: workshop
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RaphaelBernoldi/estudos.git
+    targetRevision: HEAD
+    path: workshop-devops-na-nuvem/04-dnv-gitops
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  
