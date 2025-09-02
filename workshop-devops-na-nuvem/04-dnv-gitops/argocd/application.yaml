@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/RaphaelBernoldi/estudos.git
-    targetRevision: HEAD
+    targetRevision: master
     path: workshop-devops-na-nuvem/04-dnv-gitops
   destination:
     server: https://kubernetes.default.svc
